@@ -1,0 +1,132 @@
+.nav {
+    // width: 100%;
+    height: $navHeight;
+    background-color: olive;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0px 10px 14px 0px rgba(0,0,0,0.1);
+    .nav-top & {
+        box-shadow: none;
+    }
+    .navTitle {
+        flex: 1;
+    }
+    .menuToggle {
+        height: 30px;
+        width: 40px;
+        background-color:transparent;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        align-content: center;
+        outline: 0;
+        border: 0;
+        margin-right: 20px;
+        position: relative;
+        z-index: 100;
+
+        span {
+            width: 40px;
+            height: 4px;
+            background-color: whitesmoke;
+            display: block;
+            border-radius: 1px;
+            transition: 0.4s;
+        }
+    }
+    .menu {
+        opacity: 0;
+        width: 100%;
+        height: 0;
+        position: fixed;
+        top: 0;
+        left:0;
+        background-color: orchid;
+        transition: opacity .3s linear, height .3s linear;
+        a {
+            text-decoration: none;
+            opacity: 0;
+            z-index: 0;
+            display: none;
+            transition: opacity .5s linear, z-index .2s linear;
+            font-size: 42px;
+            color: whitesmoke;
+        }
+        ul {
+            list-style:none;
+            margin-block-start: 0;
+            margin-block-end: 0;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            padding-inline-start: 0px;
+            li {
+                a {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    &.open {
+        background-color: orchid;
+        .menu {
+            opacity: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            a {
+                display: inline;
+                z-index: 1;
+                opacity: 1;
+            }
+        }
+        .menuToggle {
+            justify-content: center;
+            span:nth-of-type(1){
+                transform: rotate(45deg) translate(2px, 2px);
+            }
+            span:nth-of-type(2){
+                transform: rotate(-45deg) translate(1px, -1px);
+            }
+        }
+    }
+}
+
+
+.scrollbar.navbar {
+    // .open & {
+    //     position: absolute;
+    //     top: 0!important;
+    // }
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    width: 100%;
+    // max-width: calc(#{$max-content} + 100px);
+    // height: $nav-height;
+    // padding-left: $desktop-padding;
+    // padding-right: $desktop-padding;
+    // margin-right: auto;
+    // margin-left: auto;
+    position: fixed;
+    top:0;
+    // left:50%;
+    // transform:translateX(-50%);
+    transition: top .8s ease-in-out;
+    z-index: 10;
+    background-color: white;
+    &.scrollbar-hidden {
+        top:-200px;
+        .stopShow & {
+            top: 0;
+      }
+    }
+}
+
+.menu-open {
+    overflow: hidden;
+}
